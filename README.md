@@ -1,1 +1,1 @@
-# riverpod-core
+# riverpod_core_brick
