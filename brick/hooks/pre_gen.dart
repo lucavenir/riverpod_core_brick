@@ -2,11 +2,9 @@ import 'package:mason/mason.dart';
 
 void run(HookContext context) {
   // Read vars.
-  final name = context.vars['name'];
-
-  // Use the `Logger` instance.
-  context.logger.info('Hello $name!');
+  final usesRiverpodCodegen = context.vars['codegen'] as bool;
+  final usesFreezedCodegen = context.vars['freezed'] as bool;
 
   // Update vars.
-  context.vars['current_year'] = DateTime.now().year;
+  context.vars['anyCodegen'] = usesRiverpodCodegen || usesFreezedCodegen;
 }
