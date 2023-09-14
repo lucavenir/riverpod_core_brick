@@ -6,9 +6,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
 
-class {{project_name.pascalCase()}} extends ProviderObserver {
-  const {{project_name.pascalCase()}}(this._logger);
-  final Logger _logger;
+class {{name.pascalCase()}} extends ProviderObserver {
+  const {{name.pascalCase()}}(this._logger.logger);
+  final {{name.pascalCase()}}Logger _logger.logger;
 
   @override
   void didAddProvider(
@@ -16,7 +16,7 @@ class {{project_name.pascalCase()}} extends ProviderObserver {
     Object? value,
     ProviderContainer container,
   ) {
-    _logger
+    _logger.logger
       ..finest('$provider has been created')
       ..finest('\tValue: $value');
   }
@@ -40,7 +40,7 @@ class {{project_name.pascalCase()}} extends ProviderObserver {
   ) {
     if (newValue case AsyncError()) return _error(provider, newValue.error, newValue.stackTrace);
 
-    _logger
+    _logger.logger
       ..finest('$provider updated')
       ..finest('\tOld value: $previousValue')
       ..finest('\tNew value: $newValue');
@@ -51,7 +51,7 @@ class {{project_name.pascalCase()}} extends ProviderObserver {
     ProviderBase<Object?> provider,
     ProviderContainer container,
   ) {
-    _logger.fine('$provider has been disposed');
+    _logger.logger.fine('$provider has been disposed');
   }
 
   void _error(
@@ -59,7 +59,7 @@ class {{project_name.pascalCase()}} extends ProviderObserver {
     Object error,
     StackTrace stackTrace,
   ) {
-    _logger
+    _logger.logger
       ..severe('$provider raised an Exception')
       ..severe('\tError: $error')
       ..severe('\tStack Trace: $stackTrace');
