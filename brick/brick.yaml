@@ -33,27 +33,27 @@ vars:
     default: A Very Good App
     prompt: What is the project description?
   publish:
-    type: bool
+    type: boolean
     prompt: Do you want this package to be published to pub.dev?
     default: false
     description: You can always easily change that later
   codegen:
-    type: bool
+    type: boolean
     prompt: Enable code generation for riverpod?
     default: true
     description: You can always change the dependencies later on
   freezed:
-    type: bool
+    type: boolean
     prompt: Does this project use freezed?
     default: true
     description: You can always add its dependencies and configs later on
   hooks:
-    type: bool
+    type: boolean
     prompt: Does this project use `flutter_hooks`, as well as `hooks_riverpod`?
     default: false
     description: Learn more at https://docs-v2.riverpod.dev/docs/concepts/about_hooks
   very_good_analysis:
-    type: bool
+    type: boolean
     prompt: Do you want to add very_good_analysis to this project?
     default: true
   platforms:
