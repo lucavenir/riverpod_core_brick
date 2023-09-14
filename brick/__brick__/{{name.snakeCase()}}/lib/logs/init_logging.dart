@@ -35,18 +35,7 @@ void initErrorReporting() {
   riverpodLogger.level = Level.FINEST;
   final logger = {{name.pascalCase()}}Logger(logger: riverpodLogger, color: LoggerColor.white);
 
-  riverpodLogger.onRecord.listen(
-    (record) => dev.log(
-      logger.coloredLog(record.message),
-      level: record.level.value,
-      error: record.error,
-      stackTrace: record.stackTrace,
-      sequenceNumber: record.sequenceNumber,
-      name: record.loggerName,
-      time: record.time,
-      zone: record.zone,
-    ),
-  );
+  riverpodLogger.onRecord.listen(logger.recordLogs);
 
   return logger;
 }
@@ -56,18 +45,7 @@ void initErrorReporting() {
   baseLogger.level = Level.SEVERE;
   final logger = {{name.pascalCase()}}Logger(logger: baseLogger, color: LoggerColor.magenta);
 
-  riverpodLogger.onRecord.listen(
-    (record) => dev.log(
-      logger.coloredLog(record.message),
-      level: record.level.value,
-      error: record.error,
-      stackTrace: record.stackTrace,
-      sequenceNumber: record.sequenceNumber,
-      name: record.loggerName,
-      time: record.time,
-      zone: record.zone,
-    ),
-  );
+  baseLogger.onRecord.listen(logger.recordLogs);
 
   return baseLogger;
 }
