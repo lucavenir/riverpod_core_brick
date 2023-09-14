@@ -1,4 +1,4 @@
-# {{project_name.titleCase()}}
+# {{name.titleCase()}}
 
 ![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
@@ -139,7 +139,7 @@ This project relies on [flutter_localizations][flutter_localizations_link] and f
 3. Use the new string
 
 ```dart
-import 'package:{{project_name.snakeCase()}}/l10n/l10n.dart';
+import 'package:{{name.snakeCase()}}/l10n/l10n.dart';
 
 @override
 Widget build(BuildContext context) {

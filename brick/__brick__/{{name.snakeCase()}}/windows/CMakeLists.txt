@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project({{project_name.snakeCase()}} LANGUAGES CXX)
+project({{name.snakeCase()}} LANGUAGES CXX)
 
-set(BINARY_NAME "{{project_name.snakeCase()}}")
+set(BINARY_NAME "{{name.snakeCase()}}")
 
 cmake_policy(SET CMP0063 NEW)
 

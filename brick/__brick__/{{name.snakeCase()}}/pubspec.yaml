@@ -1,4 +1,4 @@
-name: { { project_name.snakeCase() } }
+name: { { name.snakeCase() } }
 description: { { { description } } }
 version: 0.0.0+1
 publish_to: none
