@@ -19,18 +19,16 @@ environment:
 #  * a list of values (enums only)
 #  * an optional separator (list only)
 vars:
-  name:
+  project_name:
     type: string
     default: my_app
-    prompt: What is your project name?
+    prompt: What is this project's name?
   org:
     type: string
     default: com.example
-    prompt: What is the org name?
+    prompt: What is your org name?
   description:
     type: string
-    description: A short project description
-    default: A Very Good App
     prompt: What is the project description?
   publish:
     type: boolean
