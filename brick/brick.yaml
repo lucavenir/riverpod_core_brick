@@ -45,3 +45,16 @@ vars:
     type: boolean
     prompt: Do you want to add very_good_analysis to this project?
     default: true
+  platforms:
+    type: array
+    prompt: Pick the platforms you're developing on to
+    defaults:
+      - android
+      - ios
+    values:
+      - android
+      - ios
+      - web
+      - linux
+      - windows
+      - macos
