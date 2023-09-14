@@ -6,6 +6,8 @@ import 'package:stack_trace/stack_trace.dart';
 
 import '../logs/{{name.snakeCase()}}_observer.dart';
 import '../logs/{{name.snakeCase()}}_logs_color.dart';
+import '{{name.snakeCase()}}_logger.dart';
+
 
 {{name.pascalCase()}}Observer initProviderObserver()  {
   final riverpodLogger = createRiverpodLogger();
@@ -23,7 +25,7 @@ void initErrorReporting() {
   };
 
   final baseLogger = createBaseLogger();
-  FlutterError.onError = (details) => baseLogger.severe(
+  FlutterError.onError = (details) => baseLogger.logger.severe(
         details.exceptionAsString(),
         details.exception,
         details.stack,
@@ -31,8 +33,7 @@ void initErrorReporting() {
 }
 
 {{name.pascalCase()}}Logger createRiverpodLogger() {
-  final riverpodLogger = Logger('Riverpod');
-  riverpodLogger.level = Level.FINEST;
+  final riverpodLogger = Logger('Riverpod')..level=Level.FINEST;
   final logger = {{name.pascalCase()}}Logger(logger: riverpodLogger, color: LoggerColor.white);
 
   riverpodLogger.onRecord.listen(logger.recordLogs);
@@ -41,11 +42,10 @@ void initErrorReporting() {
 }
 
 {{name.pascalCase()}}Logger createBaseLogger() {
-  final baseLogger = Logger('{{name.titleCase()}}');
-  baseLogger.level = Level.SEVERE;
+  final baseLogger = Logger('{{name.titleCase()}}')..level=Level.SEVERE;
   final logger = {{name.pascalCase()}}Logger(logger: baseLogger, color: LoggerColor.magenta);
 
   baseLogger.onRecord.listen(logger.recordLogs);
 
-  return baseLogger;
+  return logger;
 }

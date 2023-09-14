@@ -1,5 +1,5 @@
-name: { { name.snakeCase() } }
-description: { { { description } } }
+name: {{name.snakeCase()}}
+description: "{{description}}"
 version: 0.0.0+1
 publish_to: none
 
@@ -20,17 +20,17 @@ dependencies:
   {{/hooks}}
   flutter_localizations:
     sdk: flutter
+  {{^hooks}}
+  flutter_riverpod: ^2.3.6
+  {{/hooks}}
   flutter_use: ^0.0.3
   {{#freezed}}
   freezed_annotation: ^2.2.0
   {{/freezed}}
-  google_fonts: ^5.1.0
   go_router: ^10.1.2
+  google_fonts: ^5.1.0
   {{#hooks}}
   hooks_riverpod: ^2.3.6
-  {{/hooks}}
-  {{^hooks}}
-  flutter_riverpod: ^2.3.6
   {{/hooks}}
   intl: ^0.18.1
   {{#freezed}}

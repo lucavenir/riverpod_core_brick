@@ -2,7 +2,7 @@ import 'dart:developer' as dev;
 
 import 'package:logging/logging.dart';
 
-import 'logger_color.dart';
+import '{{name.snakeCase()}}_logs_color.dart';
 
 final class {{name.pascalCase()}}Logger {
   {{name.pascalCase()}}Logger({

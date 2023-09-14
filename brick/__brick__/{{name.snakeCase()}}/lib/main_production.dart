@@ -1,5 +1,4 @@
 import 'core/{{name.snakeCase()}}.dart';
-import '{{name.snakeCase()}}.dart';
 import 'core/{{name.snakeCase()}}_flavors.dart';
 import 'core/init.dart';
 

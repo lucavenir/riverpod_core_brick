@@ -18,11 +18,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../logs/http_logger.dart';
 
-part 'dio.g.dart';
 
-const baseUrl = 'some-url';  // TODO: edit or add custom logic elsewhere
 
 {{#codegen}}
+part 'dio.g.dart';
 @riverpod
 Dio httpClient(HttpClientRef ref) {
 {{/codegen}}
@@ -30,7 +29,6 @@ Dio httpClient(HttpClientRef ref) {
 final httpClientProvider = Provider.autoDispose<Dio>((ref) {
 {{/codegen}}
   final httpLogger = ref.watch(httpLoggerProvider);
-  final baseUrl = ref.watch(baseUrlControllerProvider);
 
   final options = BaseOptions(
     baseUrl: '$baseUrl/api/v1',
@@ -60,6 +58,7 @@ final httpClientProvider = Provider.autoDispose<Dio>((ref) {
 {{^codegen}}
 });
 {{/codegen}}
+const baseUrl = 'some-url';  // TODO: edit or add custom logic elsewhere
 
 // Custom workaround with `SocketException` not being well captured by `DioException`
 class _MyPrettyDioLogger extends PrettyDioLogger {

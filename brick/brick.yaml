@@ -19,6 +19,7 @@ vars:
     prompt: What is your org name?
   description:
     type: string
+    default: An awesome app
     prompt: What is the project description?
   publish:
     type: boolean

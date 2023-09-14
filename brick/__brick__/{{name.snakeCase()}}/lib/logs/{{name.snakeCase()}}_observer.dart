@@ -1,14 +1,14 @@
-import 'package:logging/logging.dart';
 {{#hooks}}
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 {{/hooks}}
 {{^hooks}}
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
+import '{{name.snakeCase()}}_logger.dart';
 
-class {{name.pascalCase()}} extends ProviderObserver {
-  const {{name.pascalCase()}}(this._logger.logger);
-  final {{name.pascalCase()}}Logger _logger.logger;
+class {{name.pascalCase()}}Observer extends ProviderObserver {
+  const {{name.pascalCase()}}Observer(this._logger);
+  final {{name.pascalCase()}}Logger _logger;
 
   @override
   void didAddProvider(

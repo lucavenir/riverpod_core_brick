@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/codegen}}
 
 {{#codegen}}
-part 'package_info.g.dart';
+part '{{name.snakeCase()}}_flavors.g.dart';
 @riverpod
 {{name.pascalCase()}}Flavor flavor(FlavorRef ref) {
 {{/codegen}}

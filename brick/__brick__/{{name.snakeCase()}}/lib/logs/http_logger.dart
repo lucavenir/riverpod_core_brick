@@ -11,7 +11,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
 {{/codegen}}
-import 'logger_color.dart';
+import '{{name.snakeCase()}}_logs_color.dart';
+import '{{name.snakeCase()}}_logger.dart';
+
 
 {{#codegen}}
 part 'http_logger.g.dart';
@@ -23,8 +25,7 @@ Logger httpLogger(HttpLoggerRef ref) {
 final httpLoggerProvider = Provider.autoDispose<Logger>((ref) {
 {{/codegen}}
 
-  final httpLogger = Logger('DIO');
-  httpLogger.level = Level.INFO;
+  final httpLogger = Logger('DIO')..level = Level.INFO;
   final logger = {{name.pascalCase()}}Logger(logger: httpLogger, color: LoggerColor.green);
 
   final subscription = httpLogger.onRecord.listen(logger.recordLogs);

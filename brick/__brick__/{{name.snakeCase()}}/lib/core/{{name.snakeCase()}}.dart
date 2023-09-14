@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 {{#hooks}}
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,6 +12,8 @@ import 'package:{{name.snakeCase()}}/l10n/l10n.dart';
 
 import '../theme/dark_theme.dart';
 import '../theme/light_theme.dart';
+import '../router/routes_configuration.dart';
+import '../router/router_notifier.dart';
 
 {{#hooks}}
 class {{name.pascalCase()}} extends HookConsumerWidget {
@@ -25,7 +28,7 @@ class {{name.pascalCase()}} extends HookConsumerWidget {
       () => GoRouter(
         navigatorKey: key.value,
         debugLogDiagnostics: kDebugMode,
-        initialLocation: const SplashRoute().location,
+        initialLocation: '/',
         refreshListenable: notifier,
         // TODO handle when non-codegen
         routes: $appRoutes,
@@ -45,14 +48,14 @@ class {{name.pascalCase()}} extends HookConsumerWidget {
 {{/hooks}}
 
 {{^hooks}}
-class {{name.pascalCase()}} extends StatefulWidget {
+class {{name.pascalCase()}} extends ConsumerStatefulWidget {
   const {{name.pascalCase()}}({super.key});
 
   @override
-  State<{{name.pascalCase()}}> createState() => _{{name.pascalCase()}}State();
+  ConsumerState<{{name.pascalCase()}}> createState() => _{{name.pascalCase()}}State();
 }
 
-class _{{name.pascalCase()}}State extends State<{{name.pascalCase()}}> {
+class _{{name.pascalCase()}}State extends ConsumerState<{{name.pascalCase()}}> {
   late final GoRouter router;
   late final routerKey = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
 
@@ -63,7 +66,7 @@ class _{{name.pascalCase()}}State extends State<{{name.pascalCase()}}> {
     router = GoRouter(
       navigatorKey: routerKey,
       debugLogDiagnostics: kDebugMode,
-      initialLocation: const SplashRoute().location,
+      initialLocation: '/',
       refreshListenable: notifier,
       routes: $appRoutes,
     );

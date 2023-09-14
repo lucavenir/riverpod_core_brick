@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
 import 'package:{{name.snakeCase()}}/l10n/l10n.dart';
+import '../controllers/counter_controller.dart';
 
 class CounterPage extends ConsumerWidget {
   const CounterPage({super.key});
