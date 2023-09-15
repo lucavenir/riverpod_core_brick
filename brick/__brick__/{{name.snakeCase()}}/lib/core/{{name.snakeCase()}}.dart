@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:{{name.snakeCase()}}/l10n/l10n.dart';
 
+import '../l10n/l10n.dart';
 import '../theme/dark_theme.dart';
 import '../theme/light_theme.dart';
 import '../router/routes_configuration.dart';

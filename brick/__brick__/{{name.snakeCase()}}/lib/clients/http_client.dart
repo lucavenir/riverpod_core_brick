@@ -21,7 +21,7 @@ import '../logs/http_logger.dart';
 
 
 {{#codegen}}
-part 'dio.g.dart';
+part 'http_client.g.dart';
 @riverpod
 Dio httpClient(HttpClientRef ref) {
 {{/codegen}}
