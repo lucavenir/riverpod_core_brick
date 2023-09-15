@@ -54,7 +54,7 @@ vars:
     values:
       - android
       - ios
-      - web
-      - linux
-      - windows
       - macos
+  flavors:
+    type: list
+    prompt: List this project's flavors (empty = none)

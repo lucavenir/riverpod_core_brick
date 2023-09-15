@@ -1,33 +1,24 @@
 import 'package:mason/mason.dart';
 
+import 'supported_platforms.dart';
+import 'validate_name.dart';
+import 'validate_org.dart';
+
 void run(HookContext context) {
   // Read vars.
+  final name = context.vars['name'] as String;
+  assertValidDartPackageName(name);
   final usesRiverpodCodegen = context.vars['codegen'] as bool;
   final usesFreezedCodegen = context.vars['freezed'] as bool;
   final org = context.vars['org'] as String;
-  org.validate();
+  assertValidOrg(org);
+  final platforms = context.vars['platforms'] as List<dynamic>;
+  final parsedPlatforms = parsePlatforms(platforms.map((e) => e as String));
+  assertViableFlavoring(parsedPlatforms);
 
   // Update vars.
   context.vars['anyCodegen'] = usesRiverpodCodegen || usesFreezedCodegen;
-  context.vars['reversedOrg'] = org.reversed;
-}
-
-extension _PreGenHookUtils on String {
-  void validate() {
-    final split = this.split('.');
-    if (split.length == 1) throw InvalidOrgException(this);
-
-    final regEx = RegExp(r'^([A-Za-z]{1}[A-Za-z\d_]*\.)+[A-Za-z][A-Za-z\d_]*$');
-    final isValid = regEx.hasMatch(this);
-    if (!isValid) throw InvalidOrgException(this);
-  }
-
-  String get reversed => this.split('.').reversed.join('.');
-}
-
-class InvalidOrgException implements Exception {
-  const InvalidOrgException(this.orgName);
-  final String orgName;
-  @override
-  String toString() => "Invalid org name: $orgName";
+  context.vars['reversedOrg'] = org.split('.').reversed.join('.');
+  context.vars['isCrossPlatform'] = platforms.length > 1;
+  context.vars['formattedPlatforms'] = platforms.join(', ');
 }
