@@ -1,0 +1,9 @@
+## TODO: customize build runner as you wish, e.g:
+
+# targets:
+#   $default:
+#     builders:
+#       json_serializable:
+#         options:
+#           checked: true
+#           explicit_to_json: true
