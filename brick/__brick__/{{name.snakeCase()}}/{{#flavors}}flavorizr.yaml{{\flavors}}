@@ -16,6 +16,7 @@ flavors:
     {{/hasMacOs}}
 
   {{#otherFlavors}}
+  # TODO from here: who cares about abbreviation...??
   {{{flavor}}}:
     app:
       name: "{{name.titleCase()}} {{{abbreviation.upperCase()}}}"

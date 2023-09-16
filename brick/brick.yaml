@@ -50,7 +50,7 @@ vars:
     prompt: Pick the platforms you're developing on to
     defaults:
       - android
-      - ios
+      # - ios
     values:
       - android
       - ios
@@ -62,7 +62,3 @@ vars:
     type: boolean
     prompt: Do you want to set-up custom flavoring?
     default: true
-  overwrite:
-    type: boolean
-    prompt: Do you want to enable `flutter create`'s `--overwrite` option?
-    default: false

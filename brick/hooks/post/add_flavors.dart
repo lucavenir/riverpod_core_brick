@@ -4,14 +4,13 @@ import 'package:mason/mason.dart';
 
 Future<void> addFlavors(HookContext context) async {
   final name = context.vars['name'];
-  final isAndroid = context.vars['android'] as bool;
-  final isIOs = context.vars['isIOs'] as bool;
-  final isMacOs = context.vars['isMacOs'] as bool;
+  final isAndroid = context.vars['hasAndroid'] as bool;
+  final isIOs = context.vars['hasIOs'] as bool;
+  final isMacOs = context.vars['hasMacOs'] as bool;
 
   final processors = [
     'assets:download',
     'assets:extract',
-    'flutter:targets',
     'ide:config',
     if (isAndroid) ...[
       'android:androidManifest',
@@ -37,9 +36,11 @@ Future<void> addFlavors(HookContext context) async {
     ],
   ];
 
-  await io.Process.run(
+  final process = await io.Process.run(
     'flutter',
-    ['pub', 'run', 'flutter_flavorizr', '--processors', processors.join(',')],
+    ['pub', 'run', 'flutter_flavorizr', '--processors "${processors.join(',')}"'],
     workingDirectory: './$name',
   );
+  print(process.stderr);
+  print(process.stdout);
 }

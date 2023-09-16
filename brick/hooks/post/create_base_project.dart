@@ -8,20 +8,24 @@ Future<void> createBaseProject(HookContext context) async {
   final description = context.vars['description'];
   final org = context.vars['org'];
   final platforms = context.vars['formattedPlatforms'];
-  final shouldOverwrite = context.vars['overwrite'] as bool;
-  final overwriteOption = shouldOverwrite ? '' : 'no-';
-  await io.Process.run(
-    'flutter create $name',
+  final process = await io.Process.run(
+    'flutter',
     [
-      '-e',
-      '--project-name $name',
+      'create',
+      '$name',
+      '--empty',
       '--no-pub',
-      '--${overwriteOption}overwrite',
-      '--description "$description"',
-      '--org $org',
-      '--platforms $platforms',
+      '--overwrite',
+      '--description',
+      '"$description"',
+      '--org',
+      '$org',
+      '--platforms',
+      '$platforms',
     ],
-    workingDirectory: './$name',
   );
+  print(process.stderr);
+  print(process.stdout);
+
   progress.complete();
 }

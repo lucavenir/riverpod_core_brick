@@ -3,6 +3,8 @@ import 'dart:io' as io;
 import 'package:mason/mason.dart';
 
 Future<void> addDependencies(HookContext context) async {
+  final name = context.vars['name'];
+
   final hooks = context.vars['hooks'] as bool;
   final freezed = context.vars['freezed'] as bool;
   final codegen = context.vars['codegen'] as bool;
@@ -29,7 +31,6 @@ Future<void> addDependencies(HookContext context) async {
     'pretty_dio_logger',
     'stack_trace',
   ];
-  final formattedDependencies = dependencies.join(' ');
 
   final devDependencies = [
     if (anyCodegen) 'build_runner',
@@ -38,19 +39,19 @@ Future<void> addDependencies(HookContext context) async {
     if (freezed) 'json_serializable',
     if (codegen) 'riverpod_generator',
     'custom_lint',
-    'flutter_launcher_icons',
     'flutter_lints',
     'http_mock_adapter',
     'mocktail',
     'riverpod_lint',
     'very_good_analysis',
+    'flutter_flavorizr',
   ];
-  final formattedDevDependencies = devDependencies.map((e) => 'dev:$e').join(' ');
 
-  final name = context.vars['name'];
-  await io.Process.run(
+  final process = await io.Process.run(
     'flutter',
-    ['pub', 'add', '$formattedDependencies $formattedDevDependencies'],
+    ['pub', 'add', ...dependencies, ...devDependencies],
     workingDirectory: './$name',
   );
+  print(process.stderr);
+  print(process.stdout);
 }

@@ -6,9 +6,11 @@ Future<void> runBuildRunner(HookContext context) async {
   final anyCodegen = context.vars['anyCodegen'] as bool;
   if (!anyCodegen) return;
   final name = context.vars['name'];
-  await io.Process.run(
+  final process = await io.Process.run(
     'flutter',
     ['pub', 'run', 'build_runner', 'build', '-d'],
     workingDirectory: './$name',
   );
+  print(process.stderr);
+  print(process.stdout);
 }
