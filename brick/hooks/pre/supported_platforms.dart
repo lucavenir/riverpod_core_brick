@@ -32,6 +32,8 @@ enum AvailablePlatform {
         'web' => AvailablePlatform.web,
         _ => throw UnsupportedPlatformException(os),
       };
+
+  String toString() => '$name';
 }
 
 class UnsupportedPlatformException implements Exception {

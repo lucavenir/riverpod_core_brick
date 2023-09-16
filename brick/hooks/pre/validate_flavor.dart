@@ -10,5 +10,5 @@ class InvalidFlavorNameException implements Exception {
   const InvalidFlavorNameException(this.flavor);
   final String flavor;
   @override
-  String toString() => "Invalid flavor name: $flavor";
+  String toString() => 'Invalid flavor name: $flavor';
 }

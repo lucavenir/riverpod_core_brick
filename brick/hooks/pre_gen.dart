@@ -6,7 +6,7 @@ import 'pre/validate_flavor.dart';
 import 'pre/validate_name.dart';
 import 'pre/validate_org.dart';
 
-Future<void> run(HookContext context) async {
+void run(HookContext context) {
   // Asserting our dart package name
   final name = context.vars['name'] as String;
   assertValidDartPackageName(name);
@@ -24,25 +24,27 @@ Future<void> run(HookContext context) async {
   // Platform assertions and pre-process
   final platforms = context.vars['platforms'] as List<dynamic>;
   final parsedPlatforms = parsePlatforms(platforms.map((e) => e as String));
-  context.vars['isCrossPlatform'] = platforms.length > 1;
-  context.vars['formattedPlatforms'] = platforms.join(', ');
+  context.vars['isCrossPlatform'] = parsedPlatforms.length > 1;
+  context.vars['formattedPlatforms'] = parsedPlatforms.join(', ');
   context.vars['hasIOs'] = parsedPlatforms.contains(AvailablePlatform.ios);
   context.vars['hasAndroid'] = parsedPlatforms.contains(AvailablePlatform.android);
   context.vars['hasMacOs'] = parsedPlatforms.contains(AvailablePlatform.macos);
+  context.vars['hasWindows'] = parsedPlatforms.contains(AvailablePlatform.windows);
+  context.vars['hasWeb'] = parsedPlatforms.contains(AvailablePlatform.web);
+  context.vars['hasLinux'] = parsedPlatforms.contains(AvailablePlatform.linux);
 
   // Flavoring assertions and pre-process
   final hasFlavoring = context.vars['flavors'] as bool;
-  Future<void> handleFlavoring() async {
+  void handleFlavoring() {
     assertViableFlavoring(parsedPlatforms);
-    final logger = Logger();
-    final firstPrompt = "Please input the main flavor's name";
-    final main = await logger.prompt(firstPrompt, defaultValue: 'production');
+    const firstPrompt = "Please input the main flavor's name";
+    final main = context.logger.prompt(firstPrompt, defaultValue: 'production');
     assertValidFlavorName(main);
     context.vars['mainFlavor'] = main.lowerCase;
-    final secondPrompt = "Please input other flavors' names";
-    final otherFlavors = await logger.promptAny(secondPrompt);
+    const secondPrompt = "Please input other flavors' names";
+    final otherFlavors = context.logger.promptAny(secondPrompt);
     context.vars['otherFlavors'] = computeFlavors(otherFlavors);
   }
 
-  if (hasFlavoring) await handleFlavoring();
+  if (hasFlavoring) handleFlavoring();
 }

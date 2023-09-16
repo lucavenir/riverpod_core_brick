@@ -12,6 +12,6 @@ List<Map<String, String>> computeFlavors(List<String> others) {
       {
         'flavor': name,
         'abbreviation': name.substring(0, 3).upperCase,
-      }
+      },
   ];
 }

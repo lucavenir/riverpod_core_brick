@@ -11,5 +11,5 @@ class InvalidOrgException implements Exception {
   const InvalidOrgException(this.orgName);
   final String orgName;
   @override
-  String toString() => "Invalid org name: $orgName";
+  String toString() => 'Invalid org name: $orgName';
 }

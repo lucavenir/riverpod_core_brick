@@ -11,5 +11,5 @@ class InvalidPackageNameException implements Exception {
   const InvalidPackageNameException(this.pkgName);
   final String pkgName;
   @override
-  String toString() => "Invalid package name: $pkgName";
+  String toString() => 'Invalid package name: $pkgName';
 }
