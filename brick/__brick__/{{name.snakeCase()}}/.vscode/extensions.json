@@ -6,7 +6,6 @@
     "dart-code.flutter",
     "gaetschwartz.build-runner",
     "flutterando.flutter-coverage",
-    "localizely.flutter-intl",
     "robert-brunhage.flutter-riverpod-snippets"
   ]
 }
