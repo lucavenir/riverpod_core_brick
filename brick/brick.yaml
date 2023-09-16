@@ -62,3 +62,7 @@ vars:
     type: boolean
     prompt: Do you want to set-up custom flavoring?
     default: true
+  overwrite:
+    type: boolean
+    prompt: Do you want to enable `flutter create`'s `--overwrite` option?
+    default: false
