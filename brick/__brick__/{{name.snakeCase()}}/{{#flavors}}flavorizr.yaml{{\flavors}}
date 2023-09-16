@@ -1,0 +1,34 @@
+flavors:
+  {{mainFlavor.lowerCase()}}:
+    app:
+      name: "{{name.titleCase()}}"
+    {{#hasAndroid}}
+    android:
+      applicationId: "{{org.lowerCase()}}.{{name.snakeCase()}}"  
+    {{/hasAndroid}}
+    {{#hasIOs}}
+    ios:
+      bundleId: "{{org.lowerCase()}}.{{name.snakeCase()}}"
+    {{/hasIOs}}
+    {{#hasMacOs}}
+    macos:
+      bundleId: "{{org.lowerCase()}}.{{name.snakeCase()}}"  
+    {{/hasMacOs}}
+
+  {{#otherFlavors}}
+  {{{flavor}}}:
+    app:
+      name: "{{name.titleCase()}} {{{abbreviation.upperCase()}}}"
+    {{#hasAndroid}}
+    android:
+      applicationId: "{{org.lowerCase()}}.{{name.snakeCase()}}.{{{flavor.snakeCase()}}}"
+    {{/hasAndroid}}
+    {{#hasIOs}}
+    ios:
+      bundleId: "{{org.lowerCase()}}.{{name.snakeCase()}}.{{{flavor.snakeCase()}}}"
+    {{/hasIOs}}
+    {{#hasMacOs}}
+    macos:
+      bundleId: "{{org.lowerCase()}}.{{name.snakeCase()}}.{{{flavor.snakeCase()}}}"
+    {{/hasMacOs}}
+  {{/otherFlavors}}
