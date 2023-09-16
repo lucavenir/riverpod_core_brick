@@ -55,6 +55,10 @@ vars:
       - android
       - ios
       - macos
+      - windows
+      - linux
+      - web
   flavors:
-    type: list
-    prompt: List this project's flavors (empty = none)
+    type: boolean
+    prompt: Do you want to set-up custom flavoring?
+    default: true
