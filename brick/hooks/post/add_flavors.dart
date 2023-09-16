@@ -12,6 +12,7 @@ Future<void> addFlavors(HookContext context) async {
     'assets:download',
     'assets:extract',
     'flutter:targets',
+    'ide:config',
     if (isAndroid) ...[
       'android:androidManifest',
       'android:buildGradle',
