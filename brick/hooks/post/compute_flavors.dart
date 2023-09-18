@@ -36,11 +36,9 @@ Future<void> addFlavors(HookContext context) async {
     ],
   ];
 
-  final process = await io.Process.run(
+  final _ = await io.Process.run(
     'flutter',
     ['pub', 'run', 'flutter_flavorizr', '--processors "${processors.join(',')}"'],
     workingDirectory: './$name',
   );
-  print(process.stderr);
-  print(process.stdout);
 }

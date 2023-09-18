@@ -47,11 +47,9 @@ Future<void> addDependencies(HookContext context) async {
     'flutter_flavorizr',
   ];
 
-  final process = await io.Process.run(
+  final _ = await io.Process.run(
     'flutter',
     ['pub', 'add', ...dependencies, ...devDependencies],
     workingDirectory: './$name',
   );
-  print(process.stderr);
-  print(process.stdout);
 }
