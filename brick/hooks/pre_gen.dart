@@ -1,8 +1,7 @@
 import 'package:mason/mason.dart';
 
-import 'pre/compute_flavors.dart';
-import 'pre/supported_platforms.dart';
-import 'pre/validate_flavor.dart';
+import 'pre/flavors.dart';
+import 'pre/platforms.dart';
 import 'pre/validate_name.dart';
 import 'pre/validate_org.dart';
 
@@ -34,9 +33,7 @@ void run(HookContext context) {
   context.vars['hasLinux'] = parsedPlatforms.contains(AvailablePlatform.linux);
 
   // Flavoring assertions and pre-process
-  final hasFlavoring = context.vars['flavors'] as bool;
   void handleFlavoring() {
-    assertViableFlavoring(parsedPlatforms);
     const firstPrompt = "Please input the main flavor's name";
     final main = context.logger.prompt(firstPrompt, defaultValue: 'production');
     assertValidFlavorName(main);
@@ -46,5 +43,6 @@ void run(HookContext context) {
     context.vars['otherFlavors'] = computeFlavors(otherFlavors);
   }
 
+  final hasFlavoring = context.vars['flavorizr'] as bool;
   if (hasFlavoring) handleFlavoring();
 }

@@ -1,17 +1,5 @@
-import 'dart:io' as io;
-
 Iterable<AvailablePlatform> parsePlatforms(Iterable<String> platforms) {
   return platforms.map(AvailablePlatform.fromString);
-}
-
-void assertViableFlavoring(Iterable<AvailablePlatform> requested) {
-  if (io.Platform.isMacOS) return;
-
-  final applePlatforms = {AvailablePlatform.ios, AvailablePlatform.macos};
-  final noAppleOs = requested.toSet().intersection(applePlatforms).isEmpty;
-  if (noAppleOs) return;
-
-  throw MissingXCodeException();
 }
 
 enum AvailablePlatform {
@@ -33,7 +21,8 @@ enum AvailablePlatform {
         _ => throw UnsupportedPlatformException(os),
       };
 
-  String toString() => '$name';
+  @override
+  String toString() => name;
 }
 
 class UnsupportedPlatformException implements Exception {
@@ -41,10 +30,4 @@ class UnsupportedPlatformException implements Exception {
   final String os;
   @override
   String toString() => "This OS isn't supported by this brick yet: $os";
-}
-
-class MissingXCodeException implements Exception {
-  const MissingXCodeException();
-  @override
-  String toString() => "Can't support flavoring on Apple OSs from this operating system.";
 }

@@ -39,7 +39,7 @@ vars:
   hooks:
     type: boolean
     prompt: Does this project use `flutter_hooks`, as well as `hooks_riverpod`?
-    default: false
+    default: true
     description: Learn more at https://docs-v2.riverpod.dev/docs/concepts/about_hooks
   very_good_analysis:
     type: boolean
@@ -50,7 +50,7 @@ vars:
     prompt: Pick the platforms you're developing on to
     defaults:
       - android
-      # - ios
+      - ios
     values:
       - android
       - ios
@@ -58,7 +58,7 @@ vars:
       - windows
       - linux
       - web
-  flavors:
+  flavorizr:
     type: boolean
-    prompt: Do you want to set-up custom flavoring?
+    prompt: Do you want to add a basic `flutter_flavorizr` set-up?
     default: true
