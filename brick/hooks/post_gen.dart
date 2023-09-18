@@ -16,6 +16,8 @@ Future<void> run(HookContext context) async {
   await executeAndLog(context: context, cb: getDependencies, message: 'Installing packages..');
   await Future<void>.delayed(_duration);
 
+  final anyCodegen = context.vars['anyCodegen'] as bool;
+  if (!anyCodegen) return;
   await executeAndLog(context: context, cb: runBuildRunner, message: 'Running `build_runner`..');
 }
 
