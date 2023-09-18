@@ -108,3 +108,7 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+
+# Ignoring `build_runner` generated files
+*.freezed.dart
+*.g.dart
