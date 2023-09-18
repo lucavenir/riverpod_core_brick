@@ -1,4 +1,9 @@
+{{#very_good_analysis}}
 include: package:very_good_analysis/analysis_options.yaml
+{{/very_good_analysis}}
+{{^very_good_analysis}}
+include: package:flutter_lints/flutter.yaml
+{{/very_good_analysis}}
 
 analyzer:
   plugins:
