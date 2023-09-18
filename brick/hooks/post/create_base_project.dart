@@ -4,7 +4,6 @@ import 'package:mason/mason.dart';
 
 Future<void> createBaseProject(HookContext context) async {
   final name = context.vars['name'];
-  final progress = context.logger.progress('Creating base project...');
   final description = context.vars['description'];
   final org = context.vars['org'];
   final platforms = context.vars['formattedPlatforms'];
@@ -15,7 +14,7 @@ Future<void> createBaseProject(HookContext context) async {
       '$name',
       '--empty',
       '--no-pub',
-      '--overwrite',
+      '--no-overwrite',
       '--description',
       '"$description"',
       '--org',
@@ -26,6 +25,4 @@ Future<void> createBaseProject(HookContext context) async {
   );
   print(process.stderr);
   print(process.stdout);
-
-  progress.complete();
 }
