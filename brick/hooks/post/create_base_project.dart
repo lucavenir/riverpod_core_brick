@@ -12,7 +12,6 @@ Future<void> createBaseProject(HookContext context) async {
     [
       'create',
       '$name',
-      '--empty',
       '--no-pub',
       '--no-overwrite',
       '--description',

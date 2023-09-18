@@ -24,7 +24,7 @@ analyzer:
     - test/.test_coverage.dart
     - lib/generated_plugin_registrant.dart
     - lib/l10n/**
-    # TODO: to include generated files into the analysis? remove the following:
+    # Want to include generated files into your analysis? remove the following:
     - lib/**/*.g.dart
     - lib/**/*.freezed.dart
     - test/**/*.g.dart
