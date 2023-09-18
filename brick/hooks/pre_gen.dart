@@ -24,7 +24,7 @@ void run(HookContext context) {
   final platforms = context.vars['platforms'] as List<dynamic>;
   final parsedPlatforms = parsePlatforms(platforms.map((e) => e as String));
   context.vars['isCrossPlatform'] = parsedPlatforms.length > 1;
-  context.vars['formattedPlatforms'] = parsedPlatforms.join(', ');
+  context.vars['formattedPlatforms'] = parsedPlatforms.join(',');
   context.vars['hasIOs'] = parsedPlatforms.contains(AvailablePlatform.ios);
   context.vars['hasAndroid'] = parsedPlatforms.contains(AvailablePlatform.android);
   context.vars['hasMacOs'] = parsedPlatforms.contains(AvailablePlatform.macos);
