@@ -32,8 +32,8 @@ Future<void> addFlavors(HookContext context) async {
       'macos:schema',
       'macos:icons',
       'macos:plist',
-      'assets:clean',
     ],
+    'assets:clean',
   ];
 
   final _ = await io.Process.run(

@@ -16,10 +16,9 @@ flavors:
     {{/hasMacOs}}
 
   {{#otherFlavors}}
-  # TODO from here: who cares about abbreviation...??
   {{{flavor}}}:
     app:
-      name: "{{name.titleCase()}} {{{abbreviation.upperCase()}}}"
+      name: "{{{abbreviation.upperCase()}}} {{name.titleCase()}}"
     {{#hasAndroid}}
     android:
       applicationId: "{{org.lowerCase()}}.{{name.snakeCase()}}.{{{flavor.snakeCase()}}}"
@@ -33,3 +32,4 @@ flavors:
       bundleId: "{{org.lowerCase()}}.{{name.snakeCase()}}.{{{flavor.snakeCase()}}}"
     {{/hasMacOs}}
   {{/otherFlavors}}
+  

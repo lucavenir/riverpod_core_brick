@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:mason/mason.dart';
 
 List<Map<String, String>> computeFlavors(List<String> others) {
@@ -9,9 +11,17 @@ List<Map<String, String>> computeFlavors(List<String> others) {
     for (final name in others)
       {
         'flavor': name,
-        'abbreviation': name.substring(0, 3).upperCase,
+        'abbreviation': _makeAbbreviation(name),
       },
   ];
+}
+
+String _makeAbbreviation(String input) {
+  final regex = RegExp('[aeiou]');
+  final noVowels = input.replaceAll(regex, '');
+  final maxLength = min(noVowels.length, 3);
+  final abbreviation = noVowels.substring(0, maxLength);
+  return '[${abbreviation.upperCase}]';
 }
 
 void assertValidFlavorName(String input) {
