@@ -1,3 +1,6 @@
+# 0.0.4
+- improved brick variables' description
+
 # 0.0.3
 - removed old android/ files, which caused a disruptive bug
 

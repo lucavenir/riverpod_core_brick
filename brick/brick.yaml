@@ -3,7 +3,7 @@ description: A Riverpod Starter Flutter Mason Brick
 
 repository: https://github.com/lucavenir/riverpod-core
 
-version: 0.0.3
+version: 0.0.4
 
 environment:
   mason: ">=0.1.0-dev.50 <0.1.0"
@@ -13,38 +13,42 @@ vars:
     type: string
     default: my_app
     prompt: What is this project's name?
+    description: Your project's name
   org:
     type: string
     default: com.example
     prompt: What is your org name?
+    description: Your org's name
   description:
     type: string
     default: An awesome app
     prompt: What is the project description?
+    description: A short description of what your app does
   publish:
     type: boolean
     prompt: Do you want this package to be published to pub.dev?
     default: false
-    description: You can always easily change that later
+    description: Wanna go on pub.dev? y/n
   codegen:
     type: boolean
     prompt: Enable code generation for riverpod?
     default: true
-    description: You can always change the dependencies later on
+    description: Wanna use `build_runner`? y/n
   freezed:
     type: boolean
     prompt: Does this project use freezed?
     default: true
-    description: You can always add its dependencies and configs later on
+    description: Wanna use `freezed`? y/n
   hooks:
     type: boolean
     prompt: Does this project use `flutter_hooks`, as well as `hooks_riverpod`?
     default: true
-    description: Learn more at https://docs-v2.riverpod.dev/docs/concepts/about_hooks
+    description: Wanna use `flutter_hooks`? y/n
   very_good_analysis:
     type: boolean
     prompt: Do you want to add very_good_analysis to this project?
     default: true
+    description: Wanna use `very_good_analysis`? y/n
   platforms:
     type: array
     prompt: Pick the platforms you're developing on to
@@ -58,7 +62,9 @@ vars:
       - windows
       - linux
       - web
+    description: Selects the platforms you want to develop on
   flavorizr:
     type: boolean
     prompt: Do you want to add a basic `flutter_flavorizr` set-up?
     default: true
+    description: Wanna use `flutter_flavorizr`? y/n
