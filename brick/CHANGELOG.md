@@ -1,6 +1,12 @@
 # 0.0.4
 - improved brick variables' description
 - fix: dev dependencies now should stay under `dev_dependencies` in `pubspec.yaml`
+- changed opinionated approach: added talker as a dependency, removed old logging system
+- changed initialization to better fit riverpod's best practices
+- changed how router is initialized and injected
+- improved and customized l10n related generation and solved a number of generation issues
+- solved an issue where by-accident spaces were included in flavors' names
+- improved generated README
 
 # 0.0.3
 - removed old android/ files, which caused a disruptive bug
