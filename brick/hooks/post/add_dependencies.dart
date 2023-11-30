@@ -49,7 +49,7 @@ Future<void> addDependencies(HookContext context) async {
 
   final _ = await io.Process.run(
     'flutter',
-    ['pub', 'add', ...dependencies, ...devDependencies],
+    ['pub', 'add', ...dependencies, ...devDependencies.map((e) => 'dev:$e')],
     workingDirectory: './$name',
   );
 }
