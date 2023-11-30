@@ -1,5 +1,5 @@
-import 'package:package_info_plus/package_info_plus.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:stack_trace/stack_trace.dart';
 {{#codegen}}
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 {{/codegen}}
@@ -11,19 +11,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
 {{/codegen}}
-
+import 'package:talker_flutter/talker_flutter.dart';
 
 {{#codegen}}
-part 'package_info.g.dart';
+part 'talker.g.dart';
 @riverpod
-FutureOr<PackageInfo> packageInfo(PackageInfoRef ref) {
+Talker talker(talkerRef ref) {
 {{/codegen}}
 {{^codegen}}
-final packageInfoProvider = FutureProvider.autoDispose<PackageInfo>((ref) {
+final talkerProvider = Provider.autoDispose<Talker>((ref) {
 {{/codegen}}
-
- return PackageInfo.fromPlatform();
-
+  throw UnimplementedError("This provider is meant to be overridden");
 {{#codegen}}
 }
 {{/codegen}}

@@ -35,14 +35,5 @@ enum {{name.pascalCase()}}Flavor {
   const {{name.pascalCase()}}Flavor({required this.title});
   final String title;
 
-  // add flavor-related configurations getters and methods, if needed
-  // example:
-  String obtainAppId(String fullPackageName) {
-    if (this == production) return fullPackageName;
-
-    final split = fullPackageName.split('.');
-    final splitWithoutFlavor = split.sublist(0, split.length - 1);
-    final actualPackageName = splitWithoutFlavor.join('.');
-    return actualPackageName;
-  }
+  // add flavor-related configurations getters and methods, e.g. url or special configurations
 }

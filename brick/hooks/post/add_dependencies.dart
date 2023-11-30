@@ -26,9 +26,9 @@ Future<void> addDependencies(HookContext context) async {
     'go_router',
     'google_fonts',
     'intl',
-    'logging',
     'package_info_plus',
-    'pretty_dio_logger',
+    'talker_flutter',
+    'talker_dio_logger',
     'stack_trace',
   ];
 

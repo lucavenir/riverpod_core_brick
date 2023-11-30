@@ -13,29 +13,14 @@ import 'package:{{name.snakeCase()}}/l10n/l10n.dart';
 import '../l10n/l10n.dart';
 import '../theme/dark_theme.dart';
 import '../theme/light_theme.dart';
-import '../router/routes_configuration.dart';
-import '../router/router_notifier.dart';
+import '../router/router.dart';
 
-{{#hooks}}
-class {{name.pascalCase()}} extends HookConsumerWidget {
+class {{name.pascalCase()}} extends ConsumerWidget {
   const {{name.pascalCase()}}({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.watch(routerNotifierProvider.notifier);
-
-    final key = useRef(GlobalKey<NavigatorState>(debugLabel: 'routerKey'));
-    final router = useMemoized(
-      () => GoRouter(
-        navigatorKey: key.value,
-        debugLogDiagnostics: kDebugMode,
-        initialLocation: '/',
-        refreshListenable: notifier,
-        // TODO handle when non-codegen
-        routes: $appRoutes,
-      ),
-    );
-    useEffect(() => router.dispose, [router]);
+    final router = ref.watch(routerProvider);
     
     return  MaterialApp.router(
       routerConfig: router,
@@ -46,48 +31,3 @@ class {{name.pascalCase()}} extends HookConsumerWidget {
     );
   }
 }
-{{/hooks}}
-
-{{^hooks}}
-class {{name.pascalCase()}} extends ConsumerStatefulWidget {
-  const {{name.pascalCase()}}({super.key});
-
-  @override
-  ConsumerState<{{name.pascalCase()}}> createState() => _{{name.pascalCase()}}State();
-}
-
-class _{{name.pascalCase()}}State extends ConsumerState<{{name.pascalCase()}}> {
-  late final GoRouter router;
-  late final routerKey = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
-
-  @override
-  void initState() {
-    super.initState();
-    final notifier = ref.read(routerNotifierProvider.notifier);
-    router = GoRouter(
-      navigatorKey: routerKey,
-      debugLogDiagnostics: kDebugMode,
-      initialLocation: '/',
-      refreshListenable: notifier,
-      routes: $appRoutes,
-    );
-  }
-
-  @override
-  void dispose() {
-    router.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-    );
-  }
-}
-{{/hooks}}
