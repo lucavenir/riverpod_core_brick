@@ -12,10 +12,10 @@
 
 ## Usage 💯
 
-Before anything, run:
+For a clean run, remember, use:
 
 ```sh
-flutter pub get
+flutter clean && flutter pub get
 ```
 
 {{#anyCodegen}}
@@ -23,7 +23,7 @@ This project exploits code generation extensively.
 Before anything, you need to run `build_runner` at least once before launching this application:
 
 ```sh
-flutter pub run build_runner build -d
+dart run build_runner build -d
 ```
 
 Wait until this process is done. It can even take a few minutes.
@@ -34,21 +34,20 @@ This application currently supports the following platform{{#isCrossPlatform}}s{
 
 ### Dev server
 
+{{#flavorizr}}
 Since this application uses [flavors][flavors-link], you can't just use 'flutter run`.  
-When you're ready to see this application in action (dev server), you can run:
+When you're ready to see this application in action (debug mode), you can run:
 
+{{flavors}}
 ```sh
 # Development flavor
-$ flutter run --flavor development --target lib/main_development.dart
-
-# Staging flavor
-$ flutter run --flavor staging --target lib/main_staging.dart
-
-# Production flavor
-$ flutter run --flavor production --target lib/main_production.dart
+$ flutter run --flavor {{.}} --target lib/main_{{.snakeCase()}}.dart
 ```
+{{/flavors}}
 
-And look at this software go!
+{{/flavorizr}}
+
+...And look at this software go!
 
 ### Build
 
@@ -58,7 +57,7 @@ Building an application can be done through `flutter build`, but it's recommende
 
 ## Internals ⚙️
 
-A few notes about this Software.
+A few notes about this application (feel free to customize for info, warnings and stuff).
 
 ### Flavoring
 This project contains 3 flavors:

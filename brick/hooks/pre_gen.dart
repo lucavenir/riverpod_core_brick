@@ -40,7 +40,9 @@ void run(HookContext context) {
     context.vars['mainFlavor'] = main;
     const secondPrompt = "Please input other flavors' names";
     final otherFlavors = context.logger.promptAny(secondPrompt).map((e) => e.trim());
-    context.vars['otherFlavors'] = computeFlavors(otherFlavors);
+    final computedFlavors = computeFlavors(otherFlavors);
+    context.vars['otherFlavors'] = computedFlavors;
+    context.vars['flavors'] = [main, ...computedFlavors];
   }
 
   final hasFlavoring = context.vars['flavorizr'] as bool;
