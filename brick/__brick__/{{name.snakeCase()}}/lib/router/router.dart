@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 import 'package:go_router/go_router.dart';
 {{#codegen}}
 import 'package:riverpod_annotation/riverpod_annotation.dart';

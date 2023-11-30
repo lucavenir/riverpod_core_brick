@@ -8,7 +8,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
 import 'package:go_router/go_router.dart';
-import 'package:{{name.snakeCase()}}/l10n/l10n.dart';
 
 import '../l10n/l10n.dart';
 import '../theme/dark_theme.dart';
@@ -26,8 +25,8 @@ class {{name.pascalCase()}} extends ConsumerWidget {
       routerConfig: router,
       theme: lightTheme,
       darkTheme: darkTheme,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: {{name.pascalCase()}}Localizations.localizationsDelegates,
+      supportedLocales: {{name.pascalCase()}}Localizations.supportedLocales,
     );
   }
 }

@@ -12,6 +12,11 @@
 
 ## Usage 💯
 
+*** warning ***
+PLEASE VISIT https://docs.flutter.dev/release/breaking-changes/kotlin-version TO MIGRATE TO THE MOST RECENT VERSION OF KOTLIN
+BECAUSE OF A KNOWN ISSUE, SOME PACKAGES CONFLICT AND REQUIRE kotlin version >= 1.8.10
+*** end-of-warning ***
+
 For a clean run, remember, use:
 
 ```sh

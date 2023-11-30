@@ -38,6 +38,7 @@ Future<void> addDependencies(HookContext context) async {
     if (freezed) 'freezed',
     if (freezed) 'json_serializable',
     if (codegen) 'riverpod_generator',
+    'flutter_gen',
     'custom_lint',
     'flutter_lints',
     'http_mock_adapter',

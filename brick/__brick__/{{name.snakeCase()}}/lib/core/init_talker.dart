@@ -1,10 +1,8 @@
+import 'package:talker_flutter/talker_flutter.dart';
 import 'package:stack_trace/stack_trace.dart';
 import 'package:flutter/foundation.dart';
 
-import '{{name.snakeCase()}}_flavors.dart';
-import '{{name.snakeCase()}}.dart';
-import '{{name.snakeCase()}}_talker_observer.dart';
-
+import '../logs/{{name.snakeCase()}}_talker_observer.dart';
 
 Talker initTalker() {
   const talkerObserver = {{name.pascalCase()}}TalkerObserver();

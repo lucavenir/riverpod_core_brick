@@ -12,6 +12,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
 {{/codegen}}
+import 'talker.dart';
 
 {{#codegen}}
 part 'http_client.g.dart';
@@ -31,13 +32,13 @@ final httpClientProvider = Provider.autoDispose<Dio>((ref) {
     connectTimeout: 12.seconds,
   );
 
-  final dio = Dio(options);
+  final client = Dio(options);
 
   final loggerInterceptor = TalkerDioLogger(talker: talker);
   client.interceptors.add(loggerInterceptor);
 
-  ref.onDispose(dio.close);
-  return dio;
+  ref.onDispose(client.close);
+  return client;
 {{#codegen}}
 }
 {{/codegen}}

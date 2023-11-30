@@ -16,7 +16,7 @@ import 'package:talker_flutter/talker_flutter.dart';
 {{#codegen}}
 part 'talker.g.dart';
 @riverpod
-Talker talker(talkerRef ref) {
+Talker talker(TalkerRef ref) {
 {{/codegen}}
 {{^codegen}}
 final talkerProvider = Provider.autoDispose<Talker>((ref) {

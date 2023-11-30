@@ -1,3 +1,4 @@
+import 'package:talker_flutter/talker_flutter.dart';
 import 'package:flutter/widgets.dart';
 {{#hooks}}
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,12 +7,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
 
-import '../logs/init_talker.dart';
+import 'init_talker.dart';
+import '../clients/talker.dart';
 import '{{name.snakeCase()}}_flavors.dart';
 import '{{name.snakeCase()}}.dart';
 import '../logs/{{name.snakeCase()}}_provider_observer.dart';
 
-Future<void> initWith({{name.pascalCase()}}Flavor flavor}) async {
+Future<void> initWith({{name.pascalCase()}}Flavor flavor) async {
   WidgetsFlutterBinding.ensureInitialized();
   final talker = initTalker();
 
@@ -28,6 +30,6 @@ Future<void> initWith({{name.pascalCase()}}Flavor flavor}) async {
       }),
     ],
     observers: [{{name.pascalCase()}}ProviderObserver(talker)],
-    child: {{name.PascalCase()}},
+    child: const {{name.pascalCase()}}(),
   ));
 }

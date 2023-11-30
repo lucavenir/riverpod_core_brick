@@ -8,7 +8,7 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 
 class {{name.pascalCase()}}ProviderObserver extends ProviderObserver {
-  const {{name.pascalCase()}}Observer(this._talker);
+  const {{name.pascalCase()}}ProviderObserver(this._talker);
   final Talker _talker;
  
   @override
