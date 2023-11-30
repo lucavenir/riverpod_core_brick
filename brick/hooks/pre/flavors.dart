@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:mason/mason.dart';
 
-List<Map<String, String>> computeFlavors(List<String> others) {
+List<Map<String, String>> computeFlavors(Iterable<String> others) {
   for (final name in others) {
     assertValidFlavorName(name);
   }

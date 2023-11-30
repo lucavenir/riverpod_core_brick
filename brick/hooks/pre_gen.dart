@@ -35,11 +35,11 @@ void run(HookContext context) {
   // Flavoring assertions and pre-process
   void handleFlavoring() {
     const firstPrompt = "Please input the main flavor's name";
-    final main = context.logger.prompt(firstPrompt, defaultValue: 'production');
+    final main = context.logger.prompt(firstPrompt, defaultValue: 'production').trim().lowerCase;
     assertValidFlavorName(main);
-    context.vars['mainFlavor'] = main.lowerCase;
+    context.vars['mainFlavor'] = main;
     const secondPrompt = "Please input other flavors' names";
-    final otherFlavors = context.logger.promptAny(secondPrompt);
+    final otherFlavors = context.logger.promptAny(secondPrompt).map((e) => e.trim());
     context.vars['otherFlavors'] = computeFlavors(otherFlavors);
   }
 
