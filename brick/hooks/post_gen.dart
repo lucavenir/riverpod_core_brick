@@ -4,6 +4,7 @@ import 'execute_and_log.dart';
 import 'post/add_dependencies.dart';
 import 'post/create_base_project.dart';
 import 'post/get_dependencies.dart';
+import 'post/l10n.dart';
 import 'post/run_build_runner.dart';
 
 Future<void> run(HookContext context) async {
@@ -14,6 +15,9 @@ Future<void> run(HookContext context) async {
   await Future<void>.delayed(_duration);
 
   await executeAndLog(context: context, cb: getDependencies, message: 'Installing packages..');
+  await Future<void>.delayed(_duration);
+
+  await executeAndLog(context: context, cb: generateL10n, message: 'Generating base l10n files..');
   await Future<void>.delayed(_duration);
 
   final anyCodegen = context.vars['anyCodegen'] as bool;
