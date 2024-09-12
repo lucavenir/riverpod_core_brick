@@ -1,3 +1,5 @@
+# 0.0.6
+- fixed a silly bug with `counter_controller` (malformed name)
 # 0.0.5
 - removed `go_router` in favor of `auto_route`, until Flutter's team figures out routing
 - vastly simplified the brick's architecture, in favor of simpleness
