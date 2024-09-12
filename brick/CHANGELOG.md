@@ -1,3 +1,8 @@
+# 0.0.5
+- removed `go_router` in favor of `auto_route`, until Flutter's team figures out routing
+- vastly simplified the brick's architecture, in favor of simpleness
+- various fixes
+
 # 0.0.4
 - improved brick variables' description
 - fix: dev dependencies now should stay under `dev_dependencies` in `pubspec.yaml`
