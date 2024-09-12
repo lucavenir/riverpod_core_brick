@@ -3,7 +3,7 @@ description: A Riverpod Starter Flutter Mason Brick
 
 repository: https://github.com/lucavenir/riverpod-core
 
-version: 0.0.6
+version: 0.0.7
 
 environment:
   mason: ">=0.1.0-dev.60 <0.1.0"
