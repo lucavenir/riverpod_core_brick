@@ -1,0 +1,44 @@
+targets:
+  {{name.snakeCase()}}:
+    builders:
+      json_serializable:
+        generate_for:
+          - lib/api/**/*.model.dart
+          - lib/cache/**/*.model.dart
+          - lib/db/**/*.model.dart
+        options:
+          checked: true
+          explicit_to_json: true
+          include_if_null: false
+          field_rename: snake
+      freezed:
+        generate_for:
+          - lib/api/**/*.model.dart
+          - lib/cache/**/*.model.dart
+          - lib/db/**/*.model.dart
+          - lib/src/**/*.model.dart
+      riverpod_generator:
+        generate_for:
+          - lib/clients/**
+          - lib/router/router.dart
+          - lib/api/**/*.api.dart
+          - lib/cache/**/*.cache.dart
+          - lib/db/**/*.db.dart
+          - lib/src/**/*.provider.dart
+          - lib/src/**/*.controller.dart
+      reactive_forms_generator:
+        generate_for:
+          - lib/src/**/*.form.model.dart
+
+global_options:
+  freezed:
+    runs_before:
+      - json_serializable
+      - reactive_forms_generator
+      - riverpod_generator
+  reactive_forms_generator:
+    runs_before:
+      - riverpod_generator
+  json_serializable:
+    runs_before:
+      - riverpod_generator

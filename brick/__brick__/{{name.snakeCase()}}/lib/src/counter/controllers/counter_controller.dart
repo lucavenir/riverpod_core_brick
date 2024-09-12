@@ -11,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/codegen}}
 
 {{#codegen}}
-part 'counter_controller.g.dart';
+part 'counter.controller.g.dart';
 @riverpod
 class CounterController extends _$CounterController {
 {{/codegen}}

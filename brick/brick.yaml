@@ -31,19 +31,19 @@ vars:
     description: Wanna go on pub.dev? y/n
   codegen:
     type: boolean
-    prompt: Enable code generation for riverpod?
+    prompt: Are you a code generation user?
     default: true
     description: Wanna use `build_runner`? y/n
   freezed:
     type: boolean
-    prompt: Does this project use freezed?
+    prompt: Do you `@freezed`?
     default: true
     description: Wanna use `freezed`? y/n
   hooks:
     type: boolean
-    prompt: Does this project use `flutter_hooks`, as well as `hooks_riverpod`?
+    prompt: Does this project use hooks (from either `flutter_hooks` or `hooks_riverpod`)?
     default: true
-    description: Wanna use `flutter_hooks`? y/n
+    description: Wanna use hooks? y/n
   very_good_analysis:
     type: boolean
     prompt: Do you want to add very_good_analysis to this project?

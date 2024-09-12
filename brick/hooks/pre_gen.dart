@@ -1,5 +1,6 @@
 import 'package:mason/mason.dart';
 
+import 'context_variables.dart';
 import 'pre/flavors.dart';
 import 'pre/platforms.dart';
 import 'pre/validate_name.dart';
@@ -7,21 +8,19 @@ import 'pre/validate_org.dart';
 
 void run(HookContext context) {
   // Asserting our dart package name
-  final name = context.vars['name'] as String;
+  final name = context.name;
   assertValidDartPackageName(name);
 
   // Asserting org name and computing a reversed one
-  final org = context.vars['org'] as String;
+  final org = context.org;
   assertValidOrg(org);
   context.vars['reversedOrg'] = org.split('.').reversed.join('.');
 
   // Codegen pre-process
-  final usesRiverpodCodegen = context.vars['codegen'] as bool;
-  final usesFreezedCodegen = context.vars['freezed'] as bool;
-  context.vars['anyCodegen'] = usesRiverpodCodegen || usesFreezedCodegen;
+  context.vars['anyCodegen'] = context.codegen || context.freezed;
 
   // Platform assertions and pre-process
-  final platforms = context.vars['platforms'] as List<dynamic>;
+  final platforms = context.platforms;
   final parsedPlatforms = parsePlatforms(platforms.map((e) => e as String));
   context.vars['isCrossPlatform'] = parsedPlatforms.length > 1;
   context.vars['formattedPlatforms'] = parsedPlatforms.join(',');
@@ -45,6 +44,5 @@ void run(HookContext context) {
     context.vars['flavors'] = [main, ...computedFlavors];
   }
 
-  final hasFlavoring = context.vars['flavorizr'] as bool;
-  if (hasFlavoring) handleFlavoring();
+  if (context.hasFlavoring) handleFlavoring();
 }

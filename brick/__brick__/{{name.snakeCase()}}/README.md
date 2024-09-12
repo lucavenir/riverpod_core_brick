@@ -12,11 +12,6 @@
 
 ## Usage 💯
 
-*** warning ***
-PLEASE VISIT https://docs.flutter.dev/release/breaking-changes/kotlin-version TO MIGRATE TO THE MOST RECENT VERSION OF KOTLIN
-BECAUSE OF A KNOWN ISSUE, SOME PACKAGES CONFLICT AND REQUIRE kotlin version >= 1.8.10
-*** end-of-warning ***
-
 For a clean run, remember, use:
 
 ```sh
@@ -37,11 +32,9 @@ Wait until this process is done. It can even take a few minutes.
 ### Supported platforms
 This application currently supports the following platform{{#isCrossPlatform}}s{{/isCrossPlatform}}: {{formattedPlatforms}}.
 
-### Dev server
+### Development
 
-{{#flavorizr}}
-Since this application uses [flavors][flavors-link], you can't just use 'flutter run`.  
-When you're ready to see this application in action (debug mode), you can run:
+When you're ready to see this application in action, you can run:
 
 {{flavors}}
 ```sh
@@ -49,10 +42,14 @@ When you're ready to see this application in action (debug mode), you can run:
 $ flutter run --flavor {{.}} --target lib/main_{{.snakeCase()}}.dart
 ```
 {{/flavors}}
+{{^flavors}}
+```sh
+$ flutter run
+```
+{{/flavors}}
 
-{{/flavorizr}}
 
-...And look at this software go!
+...And look at this app go!
 
 ### Build
 
@@ -64,12 +61,14 @@ Building an application can be done through `flutter build`, but it's recommende
 
 A few notes about this application (feel free to customize for info, warnings and stuff).
 
+{{#flavorizr}}
 ### Flavoring
 This project contains 3 flavors:
 
 - development
 - staging
 - production
+{{/flavorizr}}
 
 ### Architecture
 This project uses [well-known Clean Architecture][clean-arch-link] principles, with

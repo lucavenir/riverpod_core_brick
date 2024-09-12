@@ -1,39 +1,29 @@
 
-{{#codegen}}
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-{{/codegen}}
-{{^codegen}}
-{{#hooks}}
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-{{/hooks}}
-{{^hooks}}
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-{{/hooks}}
-{{/codegen}}
-
-{{#codegen}}
-part '{{name.snakeCase()}}_flavors.g.dart';
-@riverpod
-{{name.pascalCase()}}Flavor flavor(FlavorRef ref) {
-{{/codegen}}
-{{^codegen}}
-final flavorProvider = Provider.autoDispose<{{name.pascalCase()}}Flavor>((ref) {
-{{/codegen}}
-  throw UnimplementedError('This provider is meant to be overridden');
-{{#codegen}}
-}
-{{/codegen}}
-{{^codegen}}
-});
-{{/codegen}}
+import 'package:flutter/services.dart';
 
 enum {{name.pascalCase()}}Flavor {
-  development(title: '[DEV] {{name.titleCase()}}'),
-  staging(title: '[STG] {{name.titleCase()}}'),
-  production(title: '{{name.titleCase()}}');
+  development,
+  staging,
+  production;
 
-  const {{name.pascalCase()}}Flavor({required this.title});
-  final String title;
+  const {{name.pascalCase()}}Flavor();
 
-  // add flavor-related configurations getters and methods, e.g. url or special configurations
+  factory {{name.pascalCase()}}Flavor.fromEnv() => switch (appFlavor) {
+        'development' => development,
+        'staging' => staging,
+        'production' => production,
+        _ => throw MissingOrWrongFlavorError(appFlavor),
+      };
 }
+
+class MissingOrWrongFlavorError extends Error {
+  MissingOrWrongFlavorError(this.flavor);
+  final String? flavor;
+  @override
+  String toString() {
+    return flavor == null
+      ? 'Missing --flavor options. Please run `flutter run/build` with `--flavor`'
+      : 'Wrong or unexpected flavor: $flavor';
+  }
+}
+

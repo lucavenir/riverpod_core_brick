@@ -1,6 +1,6 @@
 void assertValidOrg(String input) {
   final split = input.split('.');
-  if (split.length == 1) throw InvalidOrgException(input);
+  if (split.length < 2) throw InvalidOrgException(input);
 
   final regEx = RegExp(r'^([A-Za-z]{1}[A-Za-z\d_]*\.)+[A-Za-z][A-Za-z\d_]*$');
   final isValid = regEx.hasMatch(input);

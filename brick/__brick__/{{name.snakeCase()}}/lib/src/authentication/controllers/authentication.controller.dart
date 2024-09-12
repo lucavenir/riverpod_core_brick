@@ -11,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/codegen}}
 
 {{#codegen}}
-part 'authentication_controller.g.dart';
+part 'authentication.controller.g.dart';
 @riverpod
 class AuthenticationController extends _$AuthenticationController {
 {{/codegen}}

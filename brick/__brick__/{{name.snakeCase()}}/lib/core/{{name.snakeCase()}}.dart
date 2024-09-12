@@ -7,11 +7,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 {{^hooks}}
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
-import 'package:go_router/go_router.dart';
+import 'package:auto_route/auto_route.dart';
 
 import '../l10n/l10n.dart';
-import '../theme/dark_theme.dart';
-import '../theme/light_theme.dart';
 import '../router/router.dart';
 
 class {{name.pascalCase()}} extends ConsumerWidget {
@@ -22,9 +20,9 @@ class {{name.pascalCase()}} extends ConsumerWidget {
     final router = ref.watch(routerProvider);
     
     return  MaterialApp.router(
-      routerConfig: router,
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      routerConfig: router.config(),
+      // theme: lightTheme,  // TODO
+      // darkTheme: darkTheme,  // TODO
       localizationsDelegates: {{name.pascalCase()}}Localizations.localizationsDelegates,
       supportedLocales: {{name.pascalCase()}}Localizations.supportedLocales,
     );

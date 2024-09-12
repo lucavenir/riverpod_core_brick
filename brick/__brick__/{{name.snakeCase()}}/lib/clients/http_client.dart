@@ -12,7 +12,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 {{/hooks}}
 {{/codegen}}
-import 'talker.dart';
+import '../logs/talker.dart';
 
 {{#codegen}}
 part 'http_client.g.dart';
@@ -22,8 +22,6 @@ Dio httpClient(HttpClientRef ref) {
 {{^codegen}}
 final httpClientProvider = Provider.autoDispose<Dio>((ref) {
 {{/codegen}}
-  final talker = ref.watch(talkerProvider);
-
   final options = BaseOptions(
     baseUrl: '$baseUrl/api/v1',  // TODO customize me
     // TODO customize these options
@@ -34,7 +32,7 @@ final httpClientProvider = Provider.autoDispose<Dio>((ref) {
 
   final client = Dio(options);
 
-  final loggerInterceptor = TalkerDioLogger(talker: talker);
+  final loggerInterceptor = TalkerDioLogger(talker: {{name.camelCase()}}Talker);
   client.interceptors.add(loggerInterceptor);
 
   ref.onDispose(client.close);
